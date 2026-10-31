@@ -1,16 +1,27 @@
-# React + Vite
+# EdTech Hackaton Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![Vite](https://img.shields.io/badge/Vite-5-purple?logo=vite)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwind-css)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)
 
-Currently, two official plugins are available:
+Фронтенд-приложение для хакатона от ЛБГУ в сфере EdTech
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠 Технологический стек
 
-## React Compiler
+- **Core:** React 18, JavaScript
+- **Сборка:** Vite
+- **Стилизация:** Tailwind CSS v4
+- **Маршрутизация:** React Router v6
+- **Инфраструктура:** Docker, Nginx
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Структура проекта
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+src/
+├── api/          # Настройка HTTP-клиента и запросов к бэкенду
+├── components/   # Переиспользуемые UI-компоненты (Layout)
+├── pages/        # Страницы приложения (Dashboard, 404)
+├── App.jsx       # Конфигурация маршрутов
+├── main.jsx      # Точка входа, провайдеры
+└── index.css     # Глобальные стили и директивы Tailwind
