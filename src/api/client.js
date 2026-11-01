@@ -1,6 +1,14 @@
+import { mockFetch } from "./mock";
+
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
 
 export async function apiFetch(path, options = {}) {
+  // ПРИ ИСПОЛЬЗОВАНИИ МОКА БУДЕМ БРАТЬ ЛОКАЛЬНЫЕ ДАННЫЕ, А НЕ ИЗ БЭКА
+  if (USE_MOCK) {
+    return mockFetch(path, options);
+  }
+
   const headers = {
     "Content-Type": "application/json",
     ...(options.headers || {}),
