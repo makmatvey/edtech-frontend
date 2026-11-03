@@ -4,6 +4,7 @@
 ![Vite](https://img.shields.io/badge/Vite-5-purple?logo=vite)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwind-css)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat&logo=opensourceinitiative&logoColor=white)](https://opensource.org/licenses/MIT)
 
 Фронтенд-приложение для хакатона от ЛБГУ в сфере EdTech
 
