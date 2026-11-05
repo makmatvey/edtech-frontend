@@ -1,13 +1,23 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button, EmptyState, IconBook } from "../components/ui";
 
 export default function NotFoundPage() {
+  const navigate = useNavigate();
+
   return (
-    <div className="text-center py-16">
-      <h1 className="text-2xl font-semibold mb-2">404</h1>
-      <p className="text-gray-500 mb-4">Такой страницы нет</p>
-      <Link to="/" className="text-blue-600 hover:underline">
-        На главную
-      </Link>
+    <div className="mx-auto max-w-lg py-8">
+      <EmptyState
+        icon={<IconBook className="size-6" />}
+        title="404 — страница не найдена"
+        description="Проверьте адрес или вернитесь на дашборд."
+        actionLabel="На главную"
+        onAction={() => navigate("/")}
+      />
+      <div className="mt-4 flex justify-center">
+        <Button variant="ghost" onClick={() => navigate("/ui-kit")}>
+          UI-кит
+        </Button>
+      </div>
     </div>
   );
 }

@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #eef5ff;
+  --color-brand-100: #d9e8ff;
+  --color-brand-200: #bcd6ff;
+  --color-brand-300: #8ebaff;
+  --color-brand-400: #5992ff;
+  --color-brand-500: #3366ff;
+  --color-brand-600: #1f4df5;
+  --color-brand-700: #183ce1;
+  --color-brand-800: #1a32b6;
+  --color-brand-900: #1b2f8f;
+
+  --color-accent-50: #fff8eb;
+  --color-accent-100: #ffecc6;
+  --color-accent-400: #ffb020;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  --color-success-50: #ecfdf3;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-600: #d97706;
+
+  --color-danger-50: #fef2f2;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f7fb;
+  --color-border: #e2e8f0;
+  --color-ink: #0f172a;
+  --color-ink-muted: #64748b;
+
+  --radius-ui: 0.625rem;
+  --radius-card: 0.875rem;
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px rgb(15 23 42 / 0.06);
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-surface-muted text-ink font-sans;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-brand-900;
+  }
+}
