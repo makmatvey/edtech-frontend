@@ -3,8 +3,8 @@ import { cn } from "./ui/cn";
 import Badge from "./ui/Badge";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
-  { label: "How it works", href: "#how-it-works" },
+  { label: "Features", href: "/#features" },
+  { label: "How it works", href: "/#how-it-works" },
 ];
 
 const linkButtonClass = cn(
@@ -48,7 +48,7 @@ export default function LandingHeader() {
             Hackathon 2026
           </Badge>
           <a
-            href="#login"
+            href="/#login"
             className="inline-flex h-8 items-center rounded-[var(--radius-ui)] px-3 text-sm font-medium text-ink-muted transition-colors hover:bg-surface-muted hover:text-ink"
           >
             Log in
