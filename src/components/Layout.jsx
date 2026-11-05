@@ -24,6 +24,9 @@ export default function Layout() {
           </Link>
 
           <nav className="flex flex-wrap items-center gap-1">
+            <NavLink to="/" end className={navLinkClass}>
+              Landing
+            </NavLink>
             <NavLink to="/dashboard" className={navLinkClass}>
               Дашборд
             </NavLink>
