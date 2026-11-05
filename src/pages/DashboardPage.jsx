@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../api/client";
 import {
   Alert,
-  Button,
   Card,
   CardContent,
   CardDescription,
@@ -21,7 +19,6 @@ import {
 } from "../components/ui";
 
 export default function DashboardPage() {
-  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -41,16 +38,11 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="mx-auto max-w-6xl space-y-8 px-4 py-8">
       <PageHeader
         title="Дашборд"
         badge={<HackathonBadge />}
         description="Сводка по цифровизации учебного процесса. Подключите бэкенд — список элементов подтянется автоматически."
-        actions={
-          <Button variant="secondary" onClick={() => navigate("/ui-kit")}>
-            Открыть UI-кит
-          </Button>
-        }
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -62,7 +54,7 @@ export default function DashboardPage() {
       <Card>
         <CardHeader>
           <CardTitle>Этапы внедрения</CardTitle>
-          <CardDescription>Пример прогресс-баров из UI-кита</CardDescription>
+          <CardDescription>Прогресс ключевых этапов</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <ProgressBar label="Интеграция с бэкендом" value={items.length > 0 ? 100 : 35} />
@@ -86,9 +78,7 @@ export default function DashboardPage() {
           <EmptyState
             icon={<IconBook className="size-6" />}
             title="Пока пусто"
-            description="Бэкенд ещё не отдаёт /items. UI-кит уже готов — собирайте экраны на его компонентах."
-            actionLabel="Перейти к UI-киту"
-            onAction={() => navigate("/ui-kit")}
+            description="Бэкенд ещё не отдаёт /items. Когда API будет готов, данные появятся здесь."
           />
         )}
 

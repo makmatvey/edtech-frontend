@@ -1,4 +1,3 @@
-import LandingHeader from "../components/LandingHeader";
 import {
   Badge,
   Card,
@@ -53,9 +52,7 @@ const anchorButtonSecondary = cn(
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-surface-muted flex flex-col">
-      <LandingHeader />
-
+    <div className="flex flex-1 flex-col">
       <main className="flex-1">
         <section className="mx-auto max-w-6xl px-4 py-16 sm:py-24 text-center">
           <Badge variant="brand" className="mb-4">

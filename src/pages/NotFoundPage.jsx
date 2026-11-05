@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button, EmptyState, IconBook } from "../components/ui";
+import { EmptyState, IconBook } from "../components/ui";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
@@ -13,11 +13,6 @@ export default function NotFoundPage() {
         actionLabel="На главную"
         onAction={() => navigate("/")}
       />
-      <div className="mt-4 flex justify-center">
-        <Button variant="ghost" onClick={() => navigate("/ui-kit")}>
-          UI-кит
-        </Button>
-      </div>
     </div>
   );
 }

@@ -12,8 +12,7 @@
 - `src/main.jsx` — точка входа, оборачивает App в BrowserRouter.
 - `src/App.jsx` — все маршруты (Routes).
 - `src/components/Layout.jsx` — общая шапка для всех страниц (через <Outlet />).
-- `src/components/ui/` — UI-кит (кнопки, формы, карточки, таблицы и т.д.). Импорт: `from '../components/ui'`.
-- `src/pages/UiKitPage.jsx` — витрина компонентов (`/ui-kit`).
+- `src/components/ui/` — переиспользуемые UI-компоненты (кнопки, формы, карточки и т.д.). Импорт: `from '../components/ui'`.
 - `src/pages/` — папка со страницами (DashboardPage, NotFoundPage).
 - `src/api/client.js` — функция `apiFetch(path, options)`. Все запросы к бэку идут ТОЛЬКО через неё. Она сама подставляет baseURL и парсит ошибки.
 - `src/index.css` — импорт Tailwind (`@import "tailwindcss";`).
