@@ -1,0 +1,26 @@
+{
+  "name": "klasna",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Класна — единая школьная платформа: журнал, программа, учебники и ежедневный стрик",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "db": "npm run db -w server",
+    "seed": "npm run seed -w server",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "npm run start -w server",
+    "test": "npm run test -w server",
+    "backup": "npm run backup -w server",
+    "audit": "npm run audit -w server --"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

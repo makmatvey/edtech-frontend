@@ -1,0 +1,53 @@
+# Пример: две школы на одном сервере. Каждая школа — отдельный контейнер с отдельной базой (том),
+# своим кодом школы и своим секретом. Данные школ физически разделены: ошибка доступа в одной
+# не открывает данные другой. Перед ними — обратный прокси (Nginx/Caddy/Traefik) с HTTPS,
+# который направляет school12.example.by → :3101, gym5.example.by → :3102.
+#
+# Запуск: скопируйте в docker-compose.yml, задайте секреты в .env (см. ниже) и выполните
+#   docker compose up -d --build
+#
+# .env (в git не попадает):
+#   SCHOOL12_JWT_SECRET=…   # openssl rand -base64 48
+#   SCHOOL12_CODE=…         # код, который администрация выдаёт учителям
+#   GYM5_JWT_SECRET=…
+#   GYM5_CODE=…
+
+x-klasna: &klasna
+  build: .
+  image: klasna:latest
+  restart: unless-stopped
+  environment: &env
+    NODE_ENV: production
+    TRUST_PROXY: "1"
+    KLASNA_BACKUP_HOURS: "24"
+    KLASNA_BACKUP_KEEP: "14"
+    KLASNA_AUDIT_DAYS: "365"
+
+services:
+  school12:
+    <<: *klasna
+    environment:
+      <<: *env
+      JWT_SECRET: ${SCHOOL12_JWT_SECRET:?задайте SCHOOL12_JWT_SECRET в .env}
+      KLASNA_SCHOOL_CODE: ${SCHOOL12_CODE:?задайте SCHOOL12_CODE в .env}
+      CORS_ORIGIN: https://school12.example.by
+    ports: ["127.0.0.1:3101:3001"]
+    volumes:
+      - school12-data:/app/data
+      - ./materials:/app/materials
+
+  gym5:
+    <<: *klasna
+    environment:
+      <<: *env
+      JWT_SECRET: ${GYM5_JWT_SECRET:?задайте GYM5_JWT_SECRET в .env}
+      KLASNA_SCHOOL_CODE: ${GYM5_CODE:?задайте GYM5_CODE в .env}
+      CORS_ORIGIN: https://gym5.example.by
+    ports: ["127.0.0.1:3102:3001"]
+    volumes:
+      - gym5-data:/app/data
+      - ./materials:/app/materials
+
+volumes:
+  school12-data:
+  gym5-data:

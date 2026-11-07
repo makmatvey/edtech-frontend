@@ -1,0 +1,221 @@
+/* ───────────── Материалы: видео, методика, аудио (файлы из папки materials) ───────────── */
+
+/* Кнопки, которые раньше были ссылками на сторонние сайты */
+button.nb-row, button.shelf-book, button.nb-book, button.list-btn, button.metric-btn {
+  font: inherit; color: inherit; text-align: left; cursor: pointer; background: transparent; border: 0; width: 100%;
+}
+button.nb-row:hover { background: color-mix(in srgb, var(--blue) 5%, transparent); }
+button.nb-row:focus-visible { outline-offset: -2px; border-radius: 0; }
+button.nb-book { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+button.nb-book:disabled { cursor: default; }
+button.nb-book:disabled:hover .nb-book-open { text-decoration: none; }
+button.list-btn:hover { background: var(--sheet-2); }
+button.metric-btn { border: 1px solid var(--line); background: var(--sheet); }
+button.metric-btn:not(:disabled):hover { border-color: var(--blue); }
+button.metric-btn:not(:disabled) .metric-foot { color: var(--blue); }
+button.metric-btn:disabled { cursor: default; }
+button.shelf-book { max-width: 168px; }
+.shelf-book.is-missing { opacity: 0.55; }
+.shelf-book.is-missing .shelf-cover { filter: grayscale(0.7); }
+.shelf-missing { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+
+.file-badge { display: grid; place-items: center; flex: none; }
+.fk-pdf { background: #fdeceb; color: #b4232f; }
+.fk-video { background: #e8f1ff; color: #1f5fbf; }
+.fk-audio { background: #fff3df; color: #9a5b00; }
+.fk-doc { background: #e9eefd; color: #2140c4; }
+.fk-slides { background: #fdf1dc; color: #b86e00; }
+.fk-image { background: #eaf6ee; color: #1d7a45; }
+:root[data-theme="dark"] .file-badge { filter: saturate(0.85) brightness(0.85); }
+
+.mat-search { position: relative; flex: 1 1 260px; max-width: 420px; }
+.mat-search svg { position: absolute; left: 12px; top: 12px; color: var(--ink-3); }
+.mat-search .input { width: 100%; padding-left: 36px; }
+.mat-mine { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); cursor: pointer; margin-left: auto; }
+.mat-mine input { width: 16px; height: 16px; accent-color: var(--blue); }
+.mat-path {
+  display: inline-block; max-width: 100%; overflow-wrap: anywhere; margin-top: 4px; padding: 8px 12px; border-radius: 8px;
+  background: var(--sheet-2); border: 1px dashed var(--line-strong); color: var(--ink); font-size: 13px; font-family: ui-monospace, Consolas, monospace;
+}
+.mat-path-inline { font-family: ui-monospace, Consolas, monospace; font-size: 12px; color: var(--ink-2); }
+.mat-rows, .res-rows { --cols: 30px minmax(0, 1fr) auto; }
+.mat-ext { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+
+/* Видеоуроки */
+.vid-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; margin-top: 16px; }
+.vid-card {
+  display: flex; flex-direction: column; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 0;
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.vid-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); border-color: var(--line-strong); }
+.vid-thumb {
+  position: relative; aspect-ratio: 16 / 9; display: grid; place-items: center; overflow: hidden;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c) 80%, #000), color-mix(in srgb, var(--c) 45%, #000));
+}
+.vid-thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.vid-play {
+  position: relative; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; padding-left: 3px;
+  background: rgba(255, 255, 255, 0.92); color: color-mix(in srgb, var(--c) 85%, #000); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform .18s ease;
+}
+.vid-card:hover .vid-play { transform: scale(1.08); }
+.vid-dur {
+  position: absolute; right: 8px; bottom: 8px; padding: 2px 7px; border-radius: 6px;
+  background: rgba(10, 14, 28, 0.78); color: #fff; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.vid-info { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px 14px; }
+.vid-title { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.vid-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-3); }
+
+/* Методика: категории-карточки */
+.meth-cats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.meth-cat {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); grid-template-rows: auto auto auto; column-gap: 12px; row-gap: 2px;
+  text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 14px 16px;
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; transition: border-color .15s, box-shadow .15s;
+}
+.meth-cat:hover { border-color: var(--line-strong); }
+.meth-cat[aria-pressed="true"] { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+.meth-ico { grid-row: 1 / 4; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); }
+.meth-t { font-weight: 700; font-size: 14px; line-height: 1.25; }
+.meth-h { font-size: 12px; color: var(--ink-3); line-height: 1.3; }
+.meth-n { font-size: 12px; color: var(--blue-ink); font-weight: 600; margin-top: 4px; }
+@media (max-width: 1100px) { .meth-cats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .meth-cats { grid-template-columns: 1fr; } }
+
+/* Аудио: строка-плеер */
+.aud-rows { --cols: 36px minmax(0, 1fr) auto; }
+.aud-rows li.is-on .nb-row { background: color-mix(in srgb, var(--amber) 7%, transparent); }
+.aud-btn {
+  width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; padding: 0 0 0 2px;
+  border: 1.5px solid var(--line-strong); background: var(--sheet); color: var(--ink);
+  transition: background .15s, color .15s, border-color .15s, transform .12s;
+}
+.aud-btn:hover { border-color: var(--amber); color: var(--amber); }
+.aud-btn:active { transform: scale(.92); }
+.aud-btn.playing { background: var(--amber); border-color: var(--amber); color: #fff; padding-left: 0; }
+.aud-bar { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.aud-bar input[type="range"] {
+  flex: 1; min-width: 80px; height: 4px; appearance: none; -webkit-appearance: none; border-radius: 4px; cursor: pointer;
+  background: linear-gradient(to right, var(--amber) var(--p), var(--line) var(--p));
+}
+.aud-bar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--amber); border: 2px solid var(--sheet); box-shadow: 0 0 0 1px var(--amber);
+}
+.aud-bar input[type="range"]::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: var(--amber); border: 2px solid var(--sheet); }
+.aud-time { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aud-rates { display: inline-flex; gap: 2px; padding: 2px; border-radius: 8px; background: var(--sheet-2); border: 1px solid var(--line); }
+.aud-rates button {
+  font: inherit; font-size: 12px; font-weight: 600; padding: 3px 7px; border: 0; border-radius: 6px; background: transparent; color: var(--ink-2); cursor: pointer;
+}
+.aud-rates button[aria-pressed="true"] { background: var(--sheet); color: var(--amber); box-shadow: var(--shadow-1); }
+
+/* Окно просмотра файла */
+.viewer-back {
+  position: fixed; inset: 0; z-index: 80; background: rgba(10, 14, 28, 0.62);
+  display: grid; place-items: center; padding: 20px; animation: fade .15s;
+}
+.viewer {
+  width: min(1200px, 100%); height: min(92vh, 1000px); display: flex; flex-direction: column; overflow: hidden;
+  background: var(--paper); border-radius: 16px; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.5);
+  animation: viewer-in .22s cubic-bezier(.2, .8, .3, 1);
+}
+.viewer.viewer-audio, .viewer.viewer-doc { height: auto; max-width: 560px; }
+.viewer-head { display: flex; align-items: center; gap: 12px; padding: 12px 14px 12px 16px; border-bottom: 1px solid var(--line); background: var(--sheet); }
+.viewer-title { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.viewer-title b { font-size: 15px; }
+.viewer-title span { font-size: 12px; color: var(--ink-3); }
+.viewer-body { flex: 1; min-height: 0; display: grid; place-items: center; background: #1b1f2c; }
+.viewer-pdf .viewer-body { background: #525659; }
+.viewer-body iframe { width: 100%; height: 100%; border: 0; }
+.viewer-body video { width: 100%; height: 100%; background: #000; }
+.viewer-body img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.viewer-audio .viewer-body, .viewer-doc .viewer-body { background: var(--paper); }
+.viewer-audio-box, .viewer-audio .viewer-body > div, .viewer-doc .viewer-body > div {
+  display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 36px 28px; text-align: center;
+}
+.viewer-body audio { width: min(440px, 80vw); }
+@keyframes viewer-in { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
+@media (max-width: 640px) { .viewer-back { padding: 0; } .viewer { height: 100%; border-radius: 0; } }
+@media (prefers-reduced-motion: reduce) { .vid-card, .vid-play, .aud-btn { transition: none; } .viewer { animation: none; } }
+
+/* Библиотека учебников 5–11 */
+.mat-section-h { font-size: 18px; font-weight: 700; margin: 4px 0 0; }
+.mat-section-row { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
+.mat-section-tools { margin-left: auto; }
+.mat-count { font-size: 13px; color: var(--ink-3); }
+.mat-count b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.mat-progress { width: 120px; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; display: inline-block; }
+.mat-progress i { display: block; height: 100%; background: var(--green); border-radius: 3px; }
+.shelf-cover-subj { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: normal; word-break: normal; }
+.shelf-book.is-missing .shelf-cover-subj { font-size: 12px; }
+.shelf-cover { position: relative; }
+.shelf-part-badge {
+  position: absolute; right: 8px; bottom: 8px; z-index: 1;
+  min-width: 28px; height: 28px; padding: 0 8px; border-radius: 999px;
+  display: grid; place-items: center; font-size: 14px; font-weight: 800;
+  color: #fff; background: color-mix(in srgb, var(--c, var(--blue)) 88%, #000);
+  box-shadow: 0 2px 8px rgba(10, 20, 50, .28);
+}
+.modal.modal-parts {
+  max-width: 380px; padding: 22px 22px 20px; position: relative;
+}
+.modal-parts > .row:first-child {
+  position: absolute; top: 10px; right: 10px; z-index: 2; margin: 0 !important;
+}
+.shelf-pick-head { margin: 0 0 18px; padding-right: 32px; }
+.shelf-pick-head h2 { margin: 0; font-size: 17px; line-height: 1.3; font-weight: 700; }
+.shelf-pick-head p { margin: 6px 0 0; font-size: 13px; color: var(--ink-3); line-height: 1.35; }
+.shelf-pick {
+  --cover-h: 150px;
+  display: flex; justify-content: center; align-items: flex-start; gap: 12px 24px;
+  margin: 0; padding: 0; flex-wrap: nowrap;
+}
+.shelf-pick .shelf-book {
+  flex: 0 0 120px; max-width: 120px; padding: 0; align-items: center; text-align: center;
+}
+.shelf-pick .shelf-cover {
+  width: 110px; height: var(--cover-h); flex: none; aspect-ratio: 110 / 150;
+}
+.shelf-pick .shelf-plank { width: 110px; margin: 0 0 10px; }
+.shelf-pick .shelf-title { text-align: center; }
+
+/* Обложки учебников */
+.shelf-cover.has-img { padding: 0; border-left: 0; background: var(--sheet-2); overflow: hidden; box-shadow: 2px 0 0 rgba(0, 0, 0, .06), inset 0 0 0 1px rgba(0, 0, 0, .06); }
+.shelf-cover.has-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shelf-book { transition: transform .16s ease; }
+button.shelf-book:hover .shelf-cover.has-img { transform: translateY(-3px); box-shadow: 0 10px 18px -10px rgba(10, 20, 50, .45); }
+.shelf-cover { transition: transform .16s ease, box-shadow .16s ease; }
+.shelf-book.no-pdf .shelf-missing { color: var(--ink-3); }
+.mat-section-tools { margin-left: 0; width: 100%; }
+.mat-section-tools .mat-search { flex: 1 1 260px !important; max-width: 360px; }
+
+/* Нарисованная обложка учебника: цвет предмета, символ, номер класса */
+.shelf-cover:not(.has-img) {
+  position: relative; overflow: hidden; border-left-width: 7px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0) 38%),
+    radial-gradient(120% 70% at 100% 100%, rgba(0,0,0,.22), transparent 60%),
+    color-mix(in srgb, var(--c, var(--blue)) 84%, #000);
+  box-shadow: inset -1px 0 0 rgba(255,255,255,.18), 3px 2px 0 rgba(10, 20, 50, .08);
+}
+.shelf-cover:not(.has-img)::after { content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 3px; background: rgba(255,255,255,.28); }
+.shelf-cover-glyph { position: absolute; right: -4px; top: 42%; transform: translateY(-50%); font-size: 46px; font-weight: 800; line-height: 1; color: rgba(255,255,255,.16); pointer-events: none; white-space: nowrap; font-family: Georgia, "Times New Roman", serif; }
+.shelf-cover:not(.has-img) .shelf-cover-subj, .shelf-cover:not(.has-img) .shelf-cover-grade { position: relative; }
+.shelf-cover:not(.has-img) .shelf-cover-grade { font-size: 34px; }
+button.shelf-book:hover .shelf-cover { transform: translateY(-3px); box-shadow: 0 10px 18px -10px rgba(10, 20, 50, .45); }
+
+/* Подсказка администратору в пустом разделе */
+.mat-howto { margin-top: 6px; font-size: 13px; color: var(--ink-3); max-width: 520px; text-align: center; }
+.mat-howto summary { cursor: pointer; color: var(--blue); font-weight: 600; list-style: none; display: inline-flex; align-items: center; gap: 4px; }
+.mat-howto summary::-webkit-details-marker { display: none; }
+.mat-howto summary::after { content: "▾"; font-size: 11px; }
+.mat-howto[open] summary::after { content: "▴"; }
+.mat-howto > span { display: block; margin-top: 8px; line-height: 1.5; }
+
+/* Полка переносится на несколько рядов: у каждого ряда своя доска (plank у каждой книги) */
+.shelf { flex-wrap: wrap; overflow: visible; row-gap: 22px; }
+.shelf::before { display: none; }
+.shelf-book { flex: 0 0 148px; max-width: 148px; }
+@media (max-width: 560px) { .shelf-book { flex-basis: 50%; max-width: 50%; } }

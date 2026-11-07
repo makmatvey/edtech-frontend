@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.db
+*.db-*
+.env
+*.tsbuildinfo
+/data/
+materials/*
+!materials/README.md
+!materials/*.txt
